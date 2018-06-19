@@ -14,11 +14,16 @@ export class HomePage {
   @ViewChild('productSlides') productSlides: Slides;
 
   constructor(public navCtrl: NavController) {
+
+    this.page = 2;
+
     this.WooCommerce = WC({
       url: "http://localhost:8080/wordpress/",
       consumerKey: "ck_c03d01a3639301b1eb07b503cc33e3cb5032adfd",
       consumerSecret: "cs_657da7da3c888c58cc034a9fa5bfd30779836c7b"
     });
+
+    this.loadMoreProducts();
 
     this.WooCommerce.getAsync("products").then((data) => {
       console.log(JSON.parse(data.body));
@@ -38,6 +43,16 @@ export class HomePage {
 
       this.productSlides.slideNext();
     }, 3000)
+  }
+
+  loadMoreProducts() {
+    this.WooCommerce.getAsync("products?page=" + this.page).then((data) => {
+      console.log(JSON.parse(data.body));
+      this.moreProducts = JSON.parse(data.body).products;
+    }, (err) => {
+      console.log(err);
+    })
+
   }
 
 }
