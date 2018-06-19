@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, Slides } from 'ionic-angular';
+import { NavController, Slides, ToastController } from 'ionic-angular';
 import * as WC from 'woocommerce-api';
 
 @Component({
@@ -13,7 +13,7 @@ export class HomePage {
 
   @ViewChild('productSlides') productSlides: Slides;
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public toastCtrl: ToastController) {
 
     this.page = 2;
 
@@ -23,7 +23,7 @@ export class HomePage {
       consumerSecret: "cs_657da7da3c888c58cc034a9fa5bfd30779836c7b"
     });
 
-    this.loadMoreProducts();
+    this.loadMoreProducts(null);
 
     this.WooCommerce.getAsync("products").then((data) => {
       console.log(JSON.parse(data.body));
@@ -45,11 +45,34 @@ export class HomePage {
     }, 3000)
   }
 
-  loadMoreProducts() {
+
+
+
+  loadMoreProducts(event) {
+    if (event == null) {
+      this.page = 2;
+      this.moreProducts = [];
+    } else {
+      this.page ++;
+    }
     this.WooCommerce.getAsync("products?page=" + this.page).then((data) => {
       console.log(JSON.parse(data.body));
-      this.moreProducts = JSON.parse(data.body).products;
-    }, (err) => {
+      this.moreProducts = this.moreProducts.concat(JSON.parse(data.body).products);
+
+      if(event != null) {
+        event.complete();
+      }
+
+      if(JSON.parse(data.body).products.length < 100 && event != null) {
+        event.enable(false);
+
+        this.toastCtrl.create({
+          message: "No More Products",
+          duration: 5000
+        }).present();
+      }
+
+      }, (err) => {
       console.log(err);
     })
 
