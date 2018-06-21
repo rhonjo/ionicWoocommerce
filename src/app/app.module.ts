@@ -5,15 +5,18 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { Menu } from '../pages/menu/menu';
+import { ProductsByCategory } from '../pages/products-by-category/products-by-category';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    Menu
+    Menu,
+    ProductsByCategory
   ],
   imports: [
     BrowserModule,
@@ -23,7 +26,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   entryComponents: [
     MyApp,
     HomePage,
-    Menu
+    Menu,
+    ProductsByCategory
   ],
   providers: [
     StatusBar,
