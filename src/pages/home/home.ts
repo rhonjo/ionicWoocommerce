@@ -10,6 +10,8 @@ export class HomePage {
 
   WooCommerce: any;
   products: any[];
+  moreProducts: any[];
+  page: number;
 
   @ViewChild('productSlides') productSlides: Slides;
 

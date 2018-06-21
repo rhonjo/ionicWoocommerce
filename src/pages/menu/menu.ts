@@ -31,6 +31,20 @@ export class Menu {
 
       for(let i = 0; i < temp.length; i++) {
         if(temp[i].parent == 0) {
+
+          temp[i].icon = "pricetag";
+
+          if(temp[i].slug == "clothing") {
+            temp[i].icon = "shirt";
+          }
+          if(temp[i].slug == "music") {
+            temp[i].icon = "musical-notes";
+          }
+          if(temp[i].slug == "poster") {
+            temp[i].icon = "images";
+          }
+
+
           this.categories.push(temp[i])
         }
       }
