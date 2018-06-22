@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, Slides, ToastController } from 'ionic-angular';
 import * as WC from 'woocommerce-api';
+import { ProductDetails } from '../product-details/product-details';
 
 @Component({
   selector: 'page-home',
@@ -79,5 +80,15 @@ export class HomePage {
     })
 
   }
+
+  openProductPage(product){
+    this.navCtrl.push(ProductDetails, {"product": product} );
+  }
+
+  // onSearch(event){
+  //   if(this.searchQuery.length > 0){
+  //     this.navCtrl.push('SearchPage', {"searchQuery": this.searchQuery});
+  //   }
+  // }
 
 }
