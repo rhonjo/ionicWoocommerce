@@ -9,9 +9,9 @@
 
 <ion-content>
 
-  <!--<ion-fab right top edge (click)="openCart()">-->
-    <!--<button ion-fab color="danger"><ion-icon name="cart"></ion-icon></button>-->
-  <!--</ion-fab>-->
+  <ion-fab right top edge (click)="openCart()">
+    <button ion-fab color="danger"><ion-icon name="cart"></ion-icon></button>
+  </ion-fab>
 
   <ion-card>
     <ion-slides autoplay="3000" loop="true">
@@ -30,7 +30,7 @@
 
       <p [innerHTML]="product.description"></p>
 
-      <button ion-button ico-left block outline color="danger">
+      <button ion-button ico-left block outline color="danger" (click)="addToCart(product)">
         <ion-icon name="basket"></ion-icon> Add to Cart
       </button>
 
