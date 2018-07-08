@@ -19,7 +19,7 @@ export class ProductDetails {
   productPrice: number = 0.0;
   selectedVariation: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public storge: Storage, public toastCtrl: ToastController, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage, public toastCtrl: ToastController, public modalCtrl: ModalController) {
 
     this.product = this.navParams.get("product");
     console.log(this.product);
@@ -80,7 +80,7 @@ export class ProductDetails {
         });
 
         if(this.selectedVariation){
-          data[0].variation = this.selectedVariation;
+         data[0].variation = this.selectedVariation;
           data[0].amount = parseFloat(this.selectedVariation.price);
         }
 
