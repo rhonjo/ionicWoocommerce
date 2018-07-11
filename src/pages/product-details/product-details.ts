@@ -46,33 +46,33 @@ export class ProductDetails {
   }
 
   addToCart(product) {
+    console.log("in add to cart" + product)
+    //let count = 0;
+    //for (let k in this.selectedOptions) if (this.selectedOptions.hasOwnProperty(k)) count++;
 
-    let count = 0;
-    for (let k in this.selectedOptions) if (this.selectedOptions.hasOwnProperty(k)) count++;
+  //  let count_ = 0;
+//    for (var index = 0; index < this.product.attributes.length; index++) {
 
-    let count_ = 0;
-    for (var index = 0; index < this.product.attributes.length; index++) {
+    //  if(this.product.attributes[index].variation)
+    //    count_++;
+    //}
 
-      if(this.product.attributes[index].variation)
-        count_++;
-    }
-
-    if(count_ != count || this.requireOptions){
-        this.toastCtrl.create({
-        message: "Select Product Options",
-        duration: 2000,
-        showCloseButton: true
-      }).present();
-      return;
-    }
+    //if(count_ != count || this.requireOptions){
+      //  this.toastCtrl.create({
+     //   message: "Select Product Options",
+     //   duration: 2000,
+    //    showCloseButton: true
+    //  }).present();
+    //  return;
+    //}
 
 
 
     this.storage.get("cart").then((data) => {
-
+      console.log("in add to cart 1" + data)
       if (data == undefined || data.length == 0) {
         data = [];
-
+        console.log("in add to cart 2" + data)
         data.push({
           "product": product,
           "qty": 1,
