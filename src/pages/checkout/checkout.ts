@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import * as WC from 'woocommerce-api';
-// import { HomePage } from '../home/home';
-// import { Menu } from '../menu/menu';
-//import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal';
+import { HomePage } from '../home/home';
+import { Menu } from '../menu/menu';
+import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal';
 
 @Component({
   selector: 'page-checkout',
@@ -98,7 +98,7 @@ export class Checkout {
 
       this.payPal.init({
         PayPalEnvironmentProduction: "YOUR_PRODUCTION_CLIENT_ID",
-        PayPalEnvironmentSandbox: "AYkkS2ObeSpaObaCqA3bybQjRNRMKOw_2vNSha7gmxESpG4l4AhEyMfYwuzrUFKSbWGhCsN-Vhtl5FOG"
+        PayPalEnvironmentSandbox: "SANDBOX_CLIENT_ID"
       }).then(() => {
         // Environments: PayPalEnvironmentNoNetwork, PayPalEnvironmentSandbox, PayPalEnvironmentProduction
         this.payPal.prepareToRender('PayPalEnvironmentSandbox', new PayPalConfiguration({

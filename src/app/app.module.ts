@@ -14,7 +14,8 @@ import { Checkout } from '../pages/checkout/checkout';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { IonicStorageModule } from '@ionic/storage';
-
+import { PayPal } from '@ionic-native/paypal';
+import { SearchPage } from '../pages/search/search';
 import { HttpModule } from '@angular/http';
 
 @NgModule({
@@ -27,7 +28,8 @@ import { HttpModule } from '@angular/http';
     Cart,
     Signup,
     Login,
-    Checkout
+    Checkout,
+    SearchPage
   ],
   imports: [
     BrowserModule,
@@ -45,11 +47,13 @@ import { HttpModule } from '@angular/http';
     Cart,
     Signup,
     Login,
-    Checkout
+    Checkout,
+    SearchPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    PayPal,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

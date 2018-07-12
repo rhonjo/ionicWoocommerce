@@ -13,6 +13,7 @@ export class HomePage {
   products: any[];
   moreProducts: any[];
   page: number;
+  searchQuery: string = "";
 
   @ViewChild('productSlides') productSlides: Slides;
 
@@ -85,10 +86,10 @@ export class HomePage {
     this.navCtrl.push(ProductDetails, {"product": product} );
   }
 
-  // onSearch(event){
-  //   if(this.searchQuery.length > 0){
-  //     this.navCtrl.push('SearchPage', {"searchQuery": this.searchQuery});
-  //   }
-  // }
+  onSearch(event){
+     if(this.searchQuery.length > 0){
+       this.navCtrl.push(SearchPage, {"searchQuery": this.searchQuery});
+     }
+   }
 
 }
