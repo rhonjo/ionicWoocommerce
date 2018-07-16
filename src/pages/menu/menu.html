@@ -9,19 +9,20 @@
   <ion-content class="card-background-page">
 
     <ion-card>
-      <img src="./assets/imgs/rock.png" />
-      <div class="card-title"> WooIonic</div>
-      <div class="card-subtitle">Keep Shopping</div>
+      <img class="logo" src="./assets/imgs/logoAlpha.png" height="200" width="150"/>
+      <!--<div class="card-title"> WooIonic</div>-->
+      <!--<div class="card-subtitle">Keep Shopping</div>-->
     </ion-card>
 
     <ion-list>
       <ion-item *ngFor="let category of categories" text-wrap (click)="openCategoryPage(category)" menuClose>
-        <ion-icon [name]="category.icon" item-left large></ion-icon>
-        <h2> {{ category.name }}</h2>
-        <p>{{ category.description }}</p>
+        <!--<ion-icon [src]="category.icon" item-left large></ion-icon>-->
+        <img [src]="category.icon" height="45" width="45" style="display: inline"/>
+        <p class="catName"> {{ category.name }}</p>
+        <!--<p>{{ category.description }}</p>-->
       </ion-item>
 
-      <ion-item-divider color="danger">Account</ion-item-divider>
+      <ion-item-divider color="primary">Account</ion-item-divider>
 
       <ion-item (click)="openPage('signup')" menuClose *ngIf="!loggedIn">
         <ion-icon name="md-clipboard" item-left large></ion-icon>

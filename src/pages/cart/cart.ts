@@ -78,7 +78,41 @@ export class Cart {
   closeModal(){
     this.viewCtrl.dismiss();
   }
+    changeQty(item, i, change){
 
+    let price;
+
+    if(!item.variation)
+      price = item.product.price;
+    else
+      price = parseFloat(item.variation.price);
+
+    let  qty = item.qty;
+
+    if(change < 0 && item.qty == 1){
+      return;
+    }
+
+    qty = qty + change;
+    item.qty = qty;
+    item.amount = qty * price;
+
+    this.cartItems[i] = item;
+
+    this.storage.set("cart", this.cartItems).then( ()=> {
+
+      this.toastController.create({
+        message: "Cart Updated.",
+        duration: 2000,
+        showCloseButton: true
+      }).present();
+
+    });
+
+    this.total = (parseFloat(this.total.toString()) + (parseFloat(price.toString()) * change));
+
+
+  }
   checkout(){
 
     this.storage.get("userLoginInfo").then( (data) => {
